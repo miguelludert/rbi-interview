@@ -1,0 +1,42 @@
+service: sls-rbi-homework
+
+custom:
+  region: ${opt:region, 'us-east-1'}
+  stage: ${opt:stage, env:NODE_ENV}
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ${self:custom.region}
+  stage: ${self:custom.stage}
+
+plugins:
+  - serverless-offline
+
+package:
+  include: "*"
+
+functions:
+  menu:
+    description: Called to create an order in NCR.
+    handler: dist/index.menuHandler
+    events:
+      - http:
+          path: /menu
+          method: GET
+  # Question #2: Add a `GET /cart` endpoint
+  cart:
+    description: N/A
+    handler: dist/index.cartHandler
+    events:
+      - http:
+          path: /cart
+          method: GET
+  # Question #3 Add a `GET /4pc-chicken/calories` endpoint
+  calorieCounter:
+    description: N/A
+    handler: dist/index.calorieCounterHandler
+    events:
+      - http:
+          path: /4pc-chicken/calories
+          method: GET

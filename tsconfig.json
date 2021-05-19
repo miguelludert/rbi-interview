@@ -1,0 +1,21 @@
+{
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "**/*.d.ts", "**/*.spec.ts", "**/*.integration.ts"],
+  "compilerOptions": {
+    "paths": {
+      "*": ["./src/@types/*"]
+    },
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "target": "ES2020",
+    "lib": ["dom", "ES2020", "esnext.asynciterable"],
+    "module": "commonjs",
+    "strict": false,
+    "removeComments": false,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "declaration": true ,
+    "esModuleInterop": true ,
+    "resolveJsonModule" : true
+  }
+}
